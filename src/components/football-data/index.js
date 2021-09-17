@@ -13,10 +13,14 @@ export default class FootballMatchesData extends Component {
   }
 
   onClick = (year) => (e) => {
+    e.preventDefault();
     // Code written in next line is to take care of adding active class to selected year for css purpose.
     this.setState({
       selectedYear: year
     })
+    fetch(`https://jsonmock.hackerrank.com/api/football_competitions?year=${year}`)
+  .then(response => response.json())
+  .then(data => console.log(data));
   }
 
   render() {
